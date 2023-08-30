@@ -1,0 +1,182 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>TP Nagios</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="./Ressources/2TSSI-codelab-nagios"
+                  title="TP Nagios"
+                  environment="web"
+                  feedback-link="Un lien vers lequel les utilisateurs peuvent signaler un bug">
+    
+      <google-codelab-step label="Rendu écrit" duration="5">
+        <p>Dans ce TP vous allez être amené à répondre à des questions. </p>
+<ul>
+<li>Vous devrez écrire ces réponses sur une feuille double A4 et écrire le titre du TP (situé en haut à gauche de ce site). </li>
+<li>Vous devrez également indiquer votre nom, prénom, classe. </li>
+<li>Vous utiliserez un stylo de couleur noir ou bleu. </li>
+<li>Vous préciserez le numéro de la question lors de la rédaction de vos réponses. (Vous n&#39;êtes pas obligé de recopier les questions)</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img\\9e98e2e9eb935ddf.jpeg"></p>
+<aside class="warning"><p>Si les conditions spécifiées précédemment ne sont pas remplies au moment de la lecture de la copie, des points de pénalité peuvent s&#39;appliquer.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Mise en place de l&#39;environnement de travail" duration="15">
+        <h2 is-upgraded><strong>Matériels nécessaire : </strong></h2>
+<ul>
+<li>Une clef USB formatée en exFAT ou NTFS</li>
+<li>La VM que vous avez créée lors du TP LAMP.</li>
+<li>Un casque audio ou des écouteurs avec une connexion par prise jack.</li>
+</ul>
+<aside class="warning"><p>RAPPEL : Votre VM doit être sauvegardée sur votre clef USB personnelle.</p>
+</aside>
+<h2 is-upgraded><strong>Pré-requis</strong></h2>
+<ol type="1" start="1">
+<li>En cherchant dans la documentation ci-dessous, expliquer à quoi sert la commande <code>sudo apt-get update</code>. <a href="https://doc.ubuntu-fr.org/apt-get#apt-get" target="_blank">https://doc.ubuntu-fr.org/apt-get#apt-get</a> lien github</li>
+</ol>
+<p>En faisant une recherche par mot clef sur la page on arrive à la section 4.1 Mise à jour dépôts. Il y est indiqué que : </p>
+<p>&#34;L&#39;option update met à jour la liste des fichiers disponibles dans les dépôts APT présents dans le fichier de configuration /etc/apt/sources.list. L&#39;exécuter régulièrement est une bonne pratique, afin de maintenir à jour votre liste de paquets disponibles.&#34;</p>
+<ol type="1" start="2">
+<li>Reprendre la documentation précédente. Citer le paragraphe qui explique pourquoi il est conseillé d&#39;utiliser la commande <code>apt</code> plutôt que <code>apt-get</code>.</li>
+</ol>
+<p>Au tout début de la page on peut lire : </p>
+<p>&#34;apt-get fournit un retour facilement analysable par un script et garantit une certaine rétro-compatibilité.</p>
+<p>Cependant les fonctionnalités que proposent apt-get sont également disponibles via la commande apt, qui est plus conviviale pour l&#39;utilisateur final. Préférez apt si vous comptez accéder directement à ces fonctionnalités via la ligne de commande.&#34;</p>
+<p>Dans un terminal, exécuter la commande : </p>
+<pre>sudo apt update</pre>
+<ol type="1" start="3">
+<li>Que doit-on taper dans un terminal afin d&#39;installer les paquets ci-dessous <strong>en une seule commande</strong> ?</li>
+</ol>
+<ul>
+<li>autoconf </li>
+<li>gcc </li>
+<li>libc6 </li>
+<li>make </li>
+<li>wget </li>
+<li>unzip </li>
+<li>apache2 </li>
+<li>php </li>
+<li>libapache2-mod-php7.4</li>
+<li>libgd-dev</li>
+</ul>
+<p>Pour installer plusieurs paquets avec apt il suffit d&#39;écrire : apt install [paquet1] [paquet2] ...</p>
+<p>Donc on doit taper la commande : </p>
+<p>sudo apt-get install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.4 libgd-dev</p>
+<p>(Astuce l&#39;option -y permet d&#39;accepter automatiquement d&#39;installer les paquets sur le disque)</p>
+<p>Exécuter cette commande sur votre machine.</p>
+<p>Un message d&#39;erreur va s&#39;afficher : </p>
+<p class="image-container"><img style="width: 624.00px" src="img\\d60fda0941b36483.png"></p>
+<p>En lisant l&#39;erreur, on s&#39;aperçoit que de nombreux paquets dépendent du paquet <code>libc6-dev</code>. Essayer d&#39;installer ce paquet.</p>
+<p>La message d&#39;erreur suivant apparaît : </p>
+<p class="image-container"><img style="width: 624.00px" src="img\\86123d90e312f68d.png"></p>
+<p>Lire le forum d&#39;entraide suivant.</p>
+<p><a href="https://askubuntu.com/questions/1315906/unmet-dependencies-libc6-the-package-system-is-broken" target="_blank">https://askubuntu.com/questions/1315906/unmet-dependencies-libc6-the-package-system-is-broken</a> github</p>
+<ol type="1" start="4">
+<li>Quelle est la solution proposée par <code>Tomeg</code> afin de résoudre le problème de <code>rtpenick</code> ?</li>
+</ol>
+<p>Tomeg propose de &#34;downgrade&#34; le paquet libc6 de la version 9.3 vers la version 9.2. Pourquoi ? Car les paquets qu&#39;il souhaite installer dépendent de la vieille version 9.2.</p>
+<ol type="1" start="5">
+<li>En adaptant la solution proposée par <code>Tomeg</code> à votre situation, proposer une commande permettant de résoudre le problème précédent.</li>
+</ol>
+<p>Tomeg possède l&#39;erreur : </p>
+<p> libc6-dev : Depends: libc6 (= 2.31-0ubuntu9.2) but 2.31-0ubuntu9.3 is to be installed</p>
+<p>Il propose la commande suivante pour downgrade le paquet : </p>
+<p>sudo apt install libc6=2.31-0ubuntu9.2 libc-bin=2.31-0ubuntu9.2</p>
+<p>En ce qui nous concerne, nous possédons l&#39;erreur : </p>
+<p>libc6-dev : Dépend: libc6 (= 2.35-0ubuntu3) mais 2.35-0ubuntu3.1 devra être installé</p>
+<p>Donc en s&#39;inspirant de la proposition de Tomeg, nous allons utiliser la commande : </p>
+<p>sudo apt install libc6=2.35-0ubuntu3 libc-bin=2.35-0ubuntu3</p>
+<ol type="1" start="6">
+<li>Essayer d&#39;installer les paquets de la question 3. Lisez attentivement les messages d&#39;erreurs afin de parvenir à installer ces paquets.</li>
+</ol>
+<p>Si on tape </p>
+<p>sudo apt-get install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.4 libgd-dev</p>
+<p>Un message d&#39;erreur nous indique que nous devrions faire la commande : </p>
+<p>Sudo apt update</p>
+<p>On tape cette commande puis on ressaissi la commande : </p>
+<p>sudo apt-get install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.4 libgd-dev</p>
+<p>Installer les paquets : <code>openssl</code> et <code>libssl-dev</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Nagios" duration="5">
+        <p class="image-container"><img style="width: 155.00px" src="img\\a8e3ebda1e3a83bb.png"></p>
+<p><a href="https://www.nagios.com/" target="_blank">https://www.nagios.com/</a></p>
+<p>Nagios est un logiciel libre. Sa première version remonte à 1996.</p>
+<p>Il est constitué de 2 composants : </p>
+<ul>
+<li>un moteur qui exécute périodiquement des tâches de supervision ;</li>
+<li>et une interface web pour visualiser les résultats collectés par le moteur.</li>
+</ul>
+<p>Il possède quelques fonctionnalités importantes : </p>
+<p>Possibilité de superviser : </p>
+<ul>
+<li>des équipements (p.ex., vérifier qu&#39;une machine répond au pings)</li>
+<li>des services (p.ex., vérifier qu&#39;apache est actif sur un PC)</li>
+<li>des ressources (espace disque, charge du processeur, . . . )</li>
+</ul>
+<p>Cartographie du réseau : </p>
+<ul>
+<li>mise en places d&#39;alerte (envoi de mail/SMS en cas de problème)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Installation de Nagios" duration="40">
+        <p>Suivez les étapes de la vidéo ci-dessous : </p>
+<iframe class="youtube-video" src="https://www.youtube.com/embed/5Y0zaDjs3fQ?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="special"><p><strong>Aide pour la partie : &#34;Ajustement après l&#39;installation&#34;</strong></p>
+<p>Pour sauvegarder un fichier après l&#39;avoir modifié avec nano : </p>
+<ul>
+<li>Faire le raccourci CTRL + X</li>
+<li>Le message suivant s&#39;affiche :  &#34;Sauver l&#39;espace modifié ?&#34;</li>
+<li>Appuyer sur la touche ‘O&#39;</li>
+</ul>
+</aside>
+<aside class="special"><p><strong>Aide pour la partie : &#34;Ajout d&#39;un hôte à surveiller&#34;</strong></p>
+<p>Modifier les paramètres : </p>
+<ul>
+<li>Host_name en indiquant le nom de votre machine, ce dernier s&#39;affiche après le @ : </li>
+</ul>
+<p class="image-container"><img style="width: 610.00px" src="img\\8ddcc0c80ec7fa85.png"></p>
+<ul>
+<li>Dans le champ address, remplacer l&#39;@IP 10.0.0.34 par l&#39;@IP de votre machine.</li>
+</ul>
+</aside>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-08-30T15:49:51Z",
+  "id": "./Ressources/2TSSI-codelab-nagios",
+  "duration": 65,
+  "title": "TP Nagios",
+  "summary": "",
+  "source": "1jFVNCrSRnMlAHnOF-_dgeiNGiygAvZu4TaA6JAqLh3s",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "feedback": "Un lien vers lequel les utilisateurs peuvent signaler un bug",
+  "url": "./Ressources/2TSSI-codelab-nagios"
+}
